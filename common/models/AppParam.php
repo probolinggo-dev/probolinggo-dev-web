@@ -48,7 +48,7 @@ class AppParam extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'app_param_id' => 'App Param ID',
+            'app_param_id' => 'Key',
             'name' => 'Name',
             'value' => 'Value',
             'updated_at' => 'Updated At',
@@ -57,5 +57,12 @@ class AppParam extends \yii\db\ActiveRecord
             'update_by' => 'Update By',
             'category' => 'Category',
         ];
+    }
+
+    public function getCreatedBy(){
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
+    }
+    public function getUpdatedBy(){
+        return $this->hasOne(User::className(), ['id' => 'update_by']);
     }
 }

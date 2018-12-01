@@ -66,7 +66,10 @@ class AppparamController extends Controller
     {
         $model = new AppParam();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->created_by = Yii::$app->user->identity->id;
+            $model->created_at = date('Y-m-d H:i:s');
+            $model->save();
             return $this->redirect(['view', 'id' => $model->app_param_id]);
         }
 
@@ -86,7 +89,10 @@ class AppparamController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->update_by = Yii::$app->user->identity->id;
+            $model->updated_at = date('Y-m-d H:i:s');
+            $model->save();
             return $this->redirect(['view', 'id' => $model->app_param_id]);
         }
 

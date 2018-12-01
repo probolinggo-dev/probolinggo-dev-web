@@ -33,8 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'value:ntext',
             'updated_at',
             'created_at',
-            'created_by',
-            'update_by',
+            [
+                'attribute'=>'created_by',
+                'value'=>(isset( $model->createdBy->username)) ?  $model->createdBy->username : ''
+            ],
+            [
+                'attribute'=>'update_by',
+                'value'=>(isset( $model->updatedBy->username)) ?  $model->updatedBy->username : ''
+            ],
             'category',
             'format_data'
         ],
