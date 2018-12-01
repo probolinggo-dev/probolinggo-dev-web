@@ -24,13 +24,15 @@ return [
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
         'urlManager' => [
-            'enablePrettyUrl' => true,
+            'enablePrettyUrl' => false,
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
               [
+                  'pluralize'=>false,
                   'class' => 'yii\rest\UrlRule',
                   'controller' => 'appparam',
+                  'except' => ['delete', 'create', 'update','index','view'],
               ],
             ],
           ],

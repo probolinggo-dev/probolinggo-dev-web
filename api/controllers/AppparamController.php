@@ -7,22 +7,13 @@ use common\models\AppParam;
 class AppparamController extends ActiveController
 {
     public $modelClass = 'common\models\AppParam';
-
-
-    public function actions()
-    {
-
+    public function actions(){
         $actions = parent::actions();
-        unset($actions['view']);
+        unset($actions['create']);
+        unset($actions['update']);
+        unset($actions['delete']);
         return $actions;
-
     }
 
-    public function actionView($id)
-    {
-            return AppParam::findOne($id);
-            throw new HttpException(404);
-    }
-
-    }
+}
 ?>
